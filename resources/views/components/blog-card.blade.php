@@ -16,9 +16,11 @@
             </div>
             <div class="flex gap-3 mt-3">
                 @foreach($blog->categories as $category)
-                <div class="border border-gray-200 rounded-lg px-3 py-1">
-                    {{ $category->name }}
-                </div>
+                    <div 
+                        class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10"
+                    >
+                        {{ $category->name }}
+                    </div>
                 @endforeach
             </div>
         </div>

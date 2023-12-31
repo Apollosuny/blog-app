@@ -6,16 +6,12 @@
                 <div style="width: 1px; height: 30px; background-color: #000"></div>
                 <div class="flex gap-3">
                     @foreach($blog->categories as $category)
-                    <div class="border border-gray-200 rounded-lg px-3 py-1">
+                    <div 
+                        class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10"
+                    >
                         {{ $category->name }}
                     </div>
                     @endforeach
-                    {{-- <div class="border border-gray-200 rounded-lg px-3 py-1">
-                        Research
-                    </div>
-                    <div class="border border-gray-200 rounded-lg px-3 py-1">
-                        Design
-                    </div> --}}
                 </div>
             </div>
             <h1 class="text-5xl font-semibold">{{ $blog->blog_title }}</h1>

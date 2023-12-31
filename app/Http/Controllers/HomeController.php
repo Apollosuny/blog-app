@@ -11,4 +11,8 @@ class HomeController extends Controller
     public function index() {
         return view('home.home', ['blogs' => Blog::all()]);
     }
+
+    public function about() {
+        return view('about');
+    }
 }
