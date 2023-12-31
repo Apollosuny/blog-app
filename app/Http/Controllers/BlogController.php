@@ -13,8 +13,7 @@ class BlogController extends Controller
         return view('blogs.show');
     }
 
-    public function show_detail($blog) {
-        echo $blog;
+    public function show_detail(Blog $blog) {
         return view('blogs.detail', [ 'blog' => $blog ]);
     }
 
@@ -30,6 +29,11 @@ class BlogController extends Controller
         $formFields['blog_slug'] = Str::slug(strtolower($request->blog_title));
         $formFields['blog_summary'] = Str::limit($request->blog_content, 150);
         $formFields['user_id'] = auth()->id();
+
+        if ($request->has('blog_banner')) {
+            $imagePath = request()->file('blog_banner')->store('blog', 'public');
+            $formFields['blog_banner'] = $imagePath;
+        }
 
         Blog::create($formFields);
         return redirect('/')->with('message', 'Blog created successfully!');

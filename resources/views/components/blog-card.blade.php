@@ -1,9 +1,9 @@
 @props(['blog'])
 
 <section>
-    <a href="/blogs/{{ $blog->blog_slug }}">
+    <a href="/blogs/{{ $blog->id }}">
         <div style="width: 100%; height: 250px" class="rounded">
-            <img class="w-full h-full rounded" src="{{ asset('images/blog.jpg') }}" alt="Blog">
+            <img class="w-full h-full rounded" src="{{ $blog->getImageUrl() }}" alt="Blog">
         </div>
         <div class="content mt-8">
             <div class="text-lg font-medium">New York . 20 Jan 2023</div>

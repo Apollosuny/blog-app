@@ -7,7 +7,7 @@
             <p class="mb-4">Post a blog</p>
         </header>
 
-        <form method="POST" action="/blog-create">
+        <form method="POST" action="/blog-create" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label for="company" class="inline-block text-lg mb-2">Blog title</label>
@@ -19,9 +19,19 @@
 
             <div class="mb-6">
                 <label for="title" class="inline-block text-lg mb-2">Blog content</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="blog_content"
-                    placeholder="Example: Senior Laravel Developer" value="{{ old('blog_content') }}" />
+                <textarea class="border border-gray-200 rounded p-2 w-full" id="blog_content" name="blog_content"
+                    placeholder="Example: Senior Laravel Developer"></textarea>
                 @error('blog_content')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="logo" class="inline-block text-lg mb-2">
+                    Blog banner
+                </label>
+                <input type="file" class="border border-gray-200 rounded p-2 w-full" name="blog_banner" />
+                @error('blog_banner')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>

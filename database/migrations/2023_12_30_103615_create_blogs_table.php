@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('blog_title');
             $table->string('blog_slug');
             $table->string('blog_summary', 200);
-            $table->text('blog_content');
+            $table->longText('blog_content');
+            $table->string('blog_banner');
             $table->integer('blog_count_reader')->default(0);
             $table->timestamps();
             $table->boolean('status')->default(true);
