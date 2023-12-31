@@ -5,15 +5,17 @@
                 <div>{{ $blog->created_at }}</div>
                 <div style="width: 1px; height: 30px; background-color: #000"></div>
                 <div class="flex gap-3">
+                    @foreach($blog->categories as $category)
                     <div class="border border-gray-200 rounded-lg px-3 py-1">
-                        Design
+                        {{ $category->name }}
                     </div>
-                    <div class="border border-gray-200 rounded-lg px-3 py-1">
+                    @endforeach
+                    {{-- <div class="border border-gray-200 rounded-lg px-3 py-1">
                         Research
                     </div>
                     <div class="border border-gray-200 rounded-lg px-3 py-1">
                         Design
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <h1 class="text-5xl font-semibold">{{ $blog->blog_title }}</h1>

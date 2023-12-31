@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $user = User::create($formFields);
 
-        Profile::create([ 'user_id' => $user->id ]);
+        // Profile::create([ 'user_id' => $user->id ]);
 
         auth()->login($user);
 

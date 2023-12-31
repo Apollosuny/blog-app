@@ -48,8 +48,19 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::created(function ($model) {
+            $profile = new Profile();
+            $model->profile()->save($profile);
+        });
+    }
+
     // Relationship with Listings
     public function blogs() {
         return $this->hasMany(Blog::class, 'user_id');
     }
+
 }

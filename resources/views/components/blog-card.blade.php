@@ -15,15 +15,11 @@
                 <p class="line-clamp-2">{{ $blog->blog_summary }}</p>
             </div>
             <div class="flex gap-3 mt-3">
+                @foreach($blog->categories as $category)
                 <div class="border border-gray-200 rounded-lg px-3 py-1">
-                    Design
+                    {{ $category->name }}
                 </div>
-                <div class="border border-gray-200 rounded-lg px-3 py-1">
-                    Research
-                </div>
-                <div class="border border-gray-200 rounded-lg px-3 py-1">
-                    Design
-                </div>
+                @endforeach
             </div>
         </div>
     </a>

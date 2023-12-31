@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,9 +23,10 @@ class BlogController extends Controller
     }
 
     public function store(Request $request) {
+        // dd($request);
         $formFields = $request->validate([
             'blog_title' => 'required',
-            'blog_content' => 'required'
+            'blog_content' => 'required',
         ]);
         $formFields['blog_slug'] = Str::slug(strtolower($request->blog_title));
         $formFields['blog_summary'] = Str::limit($request->blog_content, 150);
@@ -35,7 +37,20 @@ class BlogController extends Controller
             $formFields['blog_banner'] = $imagePath;
         }
 
-        Blog::create($formFields);
+        $tags = explode(', ', request()->input('blog_tags'));
+        $tagIds = [];
+
+        foreach ($tags as $tagName) {
+            // Tạo hoặc lấy tag từ cơ sở dữ liệu
+            $tag = Category::firstOrCreate(['name' => $tagName]);
+            
+            // Thêm id của tag vào mảng để sau này gán cho bài viết
+            $tagIds[] = $tag->id;
+        }
+
+        // Tạo bài viết và gán tag cho bài viết
+        $blog = Blog::create($formFields);
+        $blog->categories()->sync($tagIds);
         return redirect('/')->with('message', 'Blog created successfully!');
     }
 
