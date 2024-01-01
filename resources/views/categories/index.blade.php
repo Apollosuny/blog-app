@@ -7,32 +7,17 @@
                 <h4 class="text-2xl font-normal">New product features, the latest in technology, solutions and updates</h4>
             </div>
             <div>
-                <div>
-                    <input 
-                        type="text" 
-                        name="search" 
-                        placeholder="Search here..." 
-                        class="py-3 px-5 border rounded-xl w-72" 
-                    />
-                    <button class="py-3 px-5 bg-black text-white rounded-xl">Search</button>
-                </div>
+                @include('partials._search')
             </div>
             <div class="flex gap-12 mt-14">
                 <div class="text-xl font-medium">
-                    <a href="">Default</a>
+                    <a href="{{ route('categories') }}">Default</a>
                 </div>
+                @foreach ($categories as $category)
                 <div class="text-xl font-medium">
-                    <a href="">Default</a>
+                    <a href="/categories/?tag={{ $category->name }}">{{ $category->name }}</a>
                 </div>
-                <div class="text-xl font-medium">
-                    <a href="">Default</a>
-                </div>
-                <div class="text-xl font-medium">
-                    <a href="">Default</a>
-                </div>
-                <div class="text-xl font-medium">
-                    <a href="">Default</a>
-                </div>
+                @endforeach
             </div>
             <div class="grid grid-cols-3 gap-5 mt-14">
                 @unless(count($blogs) == 0)
@@ -42,6 +27,9 @@
                 @else
                     <p>No blog found!!!</p>
                 @endunless
+            </div>
+            <div class="mt-6 p-4">
+                {{ $blogs->links() }}
             </div>
         </div>
     </div>

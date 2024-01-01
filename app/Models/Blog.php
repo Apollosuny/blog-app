@@ -30,4 +30,24 @@ class Blog extends Model
     public function categories() {
         return $this->belongsToMany(Category::class);
     }
+
+    public function scopeFilter($query, array $filter) {
+        if ($filter['tag'] ?? false) {
+            $query->whereHas('categories', function ($q) {
+                $q->where('name', 'like', '%' .  request('tag') . '%');
+            });
+        }
+
+        if ($filter['search'] ?? false) {
+            $query->where(function ($query) {
+                $searchTerm = '%' . request('search') . '%';
+        
+                $query->where('blog_title', 'like', $searchTerm)
+                        ->orWhere('blog_content', 'like', $searchTerm)
+                        ->orWhereHas('categories', function ($q) use ($searchTerm) {
+                            $q->where('name', 'like', $searchTerm);
+                        });
+            });
+        }
+    }
 }

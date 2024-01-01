@@ -33,6 +33,7 @@ Route::post('/auth/local/', [AuthController::class, 'authenticate'])->name('auth
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/local/register', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 
 Route::middleware([]);

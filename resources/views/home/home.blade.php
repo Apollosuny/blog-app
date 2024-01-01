@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="home flex justify-center">
+    <div class="home flex justify-center mt-24">
         <div class="container">
             <div class="home-title text-center flex flex-col gap-4">
                 <h5 class="text-2xl font-weight-normal">The blog</h5>

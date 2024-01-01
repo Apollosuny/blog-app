@@ -9,7 +9,9 @@ class HomeController extends Controller
 {
     // render home page
     public function index() {
-        return view('home.home', ['blogs' => Blog::all()]);
+        return view('home.home', [
+            'blogs' => Blog::latest()->filter(request(['tag']))->get()
+        ]);
     }
 
     public function about() {

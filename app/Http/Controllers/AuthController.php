@@ -62,4 +62,9 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/')->with('message', 'You have been logged out!');
     }
+
+    // Render Profile page
+    public function profile(Request $request) {
+        return view('auth.profile');
+    }
 }
