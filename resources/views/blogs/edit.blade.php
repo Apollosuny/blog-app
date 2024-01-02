@@ -7,7 +7,7 @@
             <p class="mb-4">Edit: {{ $blog->blog_title }}</p>
         </header>
 
-        <form method="POST" action="/blogs/{{ $blog->id }}">
+        <form method="POST" action="/blogs/{{ $blog->id }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
@@ -23,6 +23,30 @@
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="blog_content"
                     placeholder="Example: Senior Laravel Developer" value="{{ $blog->blog_content }}" />
                 @error('blog_content')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="logo" class="inline-block text-lg mb-2">
+                    Blog banner
+                </label>
+                <input type="file" class="border border-gray-200 rounded p-2 w-full" name="blog_banner" />
+                <div class="mt-3">
+                    <img style="height: 100px; width: 100px" class="rounded" src="{{ $blog->getImageUrl() }}" alt="Banner">
+                </div>
+                @error('blog_banner')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="tags" class="inline-block text-lg mb-2">
+                    Tags (Comma Separated)
+                </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="blog_tags"
+                    placeholder="Example: Laravel, Backend, Postgres, etc" value="{{ $categories }}" />
+                @error('blog_tags')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>

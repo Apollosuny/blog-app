@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
@@ -20,20 +21,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/blogs/create', [BlogController::class, 'create_blog'])->name('blog_create');
-Route::post('/blog-create', [BlogController::class, 'store']);
-Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit']);
-Route::put('/blogs/{blog}', [BlogController::class, 'update']);
-
 Route::get('/blogs/{blog}', [BlogController::class, 'show_detail']);
-
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+// Login
+Route::middleware(['guest'])->get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/auth/local/', [AuthController::class, 'authenticate'])->name('auth.handleLogin');
-Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+
+// Register
+Route::middleware(['guest'])->get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/local/register', [AuthController::class, 'store']);
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 
-Route::middleware([]);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::get('/profile/edit', [AuthController::class, 'edit_profile'])->name('edit_profile');
+    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit']);
+    Route::delete('/blogs/{blog}', [BlogController::class, 'soft_delete']);
+});
+
+Route::post('/blog-create', [BlogController::class, 'store']);
+Route::put('/blogs/{blog}', [BlogController::class, 'update']);
+Route::put('/profile/edit', [AuthController::class, 'save_profile']);
+
+// Admin route
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/dashboard/all-blog', [AdminController::class, 'all_blog'])->name('all-blog');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});

@@ -10,7 +10,7 @@ class HomeController extends Controller
     // render home page
     public function index() {
         return view('home.home', [
-            'blogs' => Blog::latest()->filter(request(['tag']))->get()
+            'blogs' => Blog::latest()->where('status', true)->filter(request(['tag']))->get()
         ]);
     }
 

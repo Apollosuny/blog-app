@@ -9,8 +9,6 @@ class Blog extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['blog_title', 'blog_content', 'blog_slug', 'blog_summary', 'blog_count_reader'];
-
     // Relationship to User
     public function user() {
         return $this->belongsTo(User::class, 'user_id');

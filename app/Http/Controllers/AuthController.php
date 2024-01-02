@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
@@ -65,6 +67,33 @@ class AuthController extends Controller
 
     // Render Profile page
     public function profile(Request $request) {
-        return view('auth.profile');
+        return view('auth.profile', [
+            'user' => Auth::user(),
+            'blogs' => Blog::latest()->where('status', true)->get()
+        ]);
+    }
+
+    public function edit_profile() {
+        $user = Auth::user();
+        return view('auth.edit-profile', [ 'user' => $user ]);
+    }
+
+    public function save_profile(Request $request) {
+        $user = Auth::user();
+        $profile = (User::find($user->getAuthIdentifier()))->profile;
+        $profile->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'avatar' => $request->avatar,
+            'facebook_account' => $request->facebook_account,
+            'instagram_account' => $request->instagram_account,
+            'linkedin_account' => $request->linkedin_account,
+        ]);
+
+        return redirect('/profile')->with('message', 'The profile has been updated!');
+
     }
 }
