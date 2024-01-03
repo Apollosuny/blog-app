@@ -38,8 +38,8 @@
         <hr class="my-6 border-gray-200 md:my-8 dark:border-gray-700">
         
         <div class="flex items-center justify-between">
-            <a href="#">
-                <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo">
             </a>
             
             <div class="flex -mx-2">

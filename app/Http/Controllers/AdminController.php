@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function dashboard(Request $request) {
-        return view('admin.index');
+        return view('admin.dashboard');
     }
 
     public function all_blog(Request $request) {

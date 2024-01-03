@@ -107,8 +107,8 @@
                 <td class="px-6 py-4">
                     {{ $blog->user->username }}
                 </td>
-                <td class="px-6 py-4 line-clamp-3">
-                    {{ $blog->blog_content }}
+                <td class="px-6 py-4 overflow-hidden">
+                    <div class="line-clamp-3">{{ $blog->blog_content }}</div>
                 </td>
                 <td class="px-6 py-4">
                     @foreach($blog->categories as $categories)
