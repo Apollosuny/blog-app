@@ -15,6 +15,8 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         @vite('resources/css/app.css')
         <title>Blog Post</title>
     </head>
@@ -25,5 +27,7 @@
 
         <x-flash-message />
     </body>
-    
+    <script>
+        AOS.init();
+    </script>
 </html>

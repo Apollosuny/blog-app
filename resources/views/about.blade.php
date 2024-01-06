@@ -13,7 +13,7 @@
         <div class="container flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="about-desc mt-14">
                 <div class="grid grid-cols-2 items-center gap-10">
-                    <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-6" data-aos="fade-right" data-aos-duration="2000">
                         <h2 class="text-5xl font-bold">About VNUIS Blog</h2>
                         <p class="text-lg">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -36,7 +36,7 @@
                             Maecenas eget adipiscing quisque viverra lectus arcu, tincidunt ultrices pellentesque.
                         </p>
                     </div>
-                    <div style="width: 100%; height: 640px">
+                    <div style="width: 100%; height: 640px" data-aos="fade-left" data-aos-duration="2000">
                         <img class="w-full h-full rounded" src="{{ asset('images/about-banner.jpg') }}" alt="About banner">
                     </div>
                 </div>

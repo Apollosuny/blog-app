@@ -1,6 +1,6 @@
 @props(['blog'])
 
-<section>
+<section data-aos="zoom-in" data-aos-duration="2000">
     <a href="/blogs/{{ $blog->id }}">
         <div class="transition ease-out duration-300 hover:rounded-lg hover:scale-105">
             <div style="width: 100%; height: 310px" class="rounded relative">
