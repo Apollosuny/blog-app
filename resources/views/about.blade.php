@@ -41,6 +41,51 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-14">
+                <div class="flex gap-6 flex-col">
+                    <h3 class="text-5xl font-bold">Our locations</h3>
+                    <p class="w-2/3 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid blanditiis et reiciendis neque vero voluptatum omnis nulla quasi quae nemo impedit natus, voluptatem laudantium fuga commodi atque aspernatur, quod praesentium.</p>
+                </div>
+                <div class="grid grid-cols-2 mt-5">
+                    <div class="flex flex-col gap-10">
+                        <div class="flex gap-8" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="bg-black w-1"></div>
+                            <div>
+                                <div class="text-2xl font-bold">VietNam</div>
+                                <div class="text-base mt-4 mb-6">1 Trinh Van Bo St, Nam Tu Liem, Hanoi</div>
+                                <a href="" class="font-semibold">View map</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-8" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="bg-transparent w-1"></div>
+                            <div>
+                                <div class="text-2xl font-bold">VietNam</div>
+                                <div class="text-base mt-4 mb-6">1 Trinh Van Bo St, Nam Tu Liem, Hanoi</div>
+                                <a href="" class="font-semibold">View map</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-8" data-aos="fade-up" data-aos-duration="3000">
+                            <div class="bg-transparent w-1"></div>
+                            <div>
+                                <div class="text-2xl font-bold">VietNam</div>
+                                <div class="text-base mt-4 mb-6">1 Trinh Van Bo St, Nam Tu Liem, Hanoi</div>
+                                <a href="" class="font-semibold">View map</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg flex justify-center" data-aos="zoom-in-up" data-aos-duration="2000">
+                        <div class="mapouter rounded-lg">
+                            <div class="gmap_canvas rounded-lg">
+                                <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=s%E1%BB%91%201,%20tr%E1%BB%8Bnh%20v%C4%83n%20b%C3%B4&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                <a href="https://embedgooglemap.net/124/">123movies</a><br>
+                                <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+                                <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                                <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-layout>
