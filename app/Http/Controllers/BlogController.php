@@ -22,14 +22,29 @@ class BlogController extends Controller
         return view('blogs.create');
     }
 
+    public function upload_image(Request $request) {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->move(public_path('media'), $fileName);
+
+            $url = asset('media/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+        }
+    }
+
     public function store(Request $request) {
         // dd($request);
+        // dd(strip_tags($request->blog_content));
         $formFields = $request->validate([
             'blog_title' => 'required',
             'blog_content' => 'required',
         ]);
         $formFields['blog_slug'] = Str::slug(strtolower($request->blog_title));
-        $formFields['blog_summary'] = Str::limit($request->blog_content, 150);
+        $formFields['blog_summary'] = Str::limit(strip_tags($request->blog_content), 150);
         $formFields['user_id'] = auth()->id();
 
         if ($request->has('blog_banner')) {
@@ -68,7 +83,7 @@ class BlogController extends Controller
             'blog_content' => 'required'
         ]);
         $formFields['blog_slug'] = Str::slug(strtolower($request->blog_title));
-        $formFields['blog_summary'] = Str::limit($request->blog_content, 150);
+        $formFields['blog_summary'] = Str::limit(strip_tags($request->blog_content), 150);
         $formFields['user_id'] = auth()->id();
 
         if ($request->has('blog_banner')) {
@@ -91,8 +106,23 @@ class BlogController extends Controller
         return redirect('/')->with('message', 'Blog updated successfully!');
     }
 
-    public function soft_delete(Request $request, Blog $blog) {
-        $blog->update([ 'status' => false ]);
+    public function destroy(Request $request, Blog $blog) {
+        if ($blog->trashed()) {
+            $blog->forceDelete();
+            return redirect('/');
+        }
+
+        $blog->delete();
         return redirect('/')->with('message', 'Blog deleted successfully!');
+    }
+
+    // Achieve blog
+    public function achieve(Request $request) {
+        return view('blogs.achieve', [ 'blogs' => Blog::onlyTrashed()->get()]);
+    }
+
+    public function restore(Request $request, Blog $blog) {
+        $blog->restore();
+        return redirect('/');
     }
 }

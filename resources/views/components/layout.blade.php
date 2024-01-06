@@ -12,6 +12,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
         <script src="//unpkg.com/alpinejs" defer></script>
         @vite('resources/css/app.css')
         <title>Blog Post</title>
@@ -23,4 +24,5 @@
 
         <x-flash-message />
     </body>
+    
 </html>

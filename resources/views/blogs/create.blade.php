@@ -19,7 +19,7 @@
             
                         <div class="mb-6">
                             <label for="title" class="inline-block text-lg mb-2">Blog content</label>
-                            <textarea class="border border-gray-200 rounded p-2 w-full" id="blog_content" name="blog_content"
+                            <textarea class="border border-gray-200 rounded p-2 w-full" id="editor" name="blog_content"
                                 placeholder="Example: Senior Laravel Developer"></textarea>
                             @error('blog_content')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -60,3 +60,16 @@
         </div>
     </div>
 </x-layout>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector( '#editor' ), {
+            ckfinder: {
+                uploadUrl: "{{ route('upload', ['_token'=>csrf_token()]) }}"
+            }
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+

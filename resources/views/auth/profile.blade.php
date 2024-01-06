@@ -122,7 +122,10 @@
                 </div>
             </div>
             <div class="grid grid-cols-4 mt-10">
-                <div class="text-3xl font-semibold col-span-1">Blogs</div>
+                <div class="text-3xl font-semibold col-span-1">
+                    Blogs
+                    <a href="{{ route('achieve') }}">Achive Blog</a>
+                </div>
                 <div class="grid grid-cols-2 gap-8 col-span-3">
                     @unless(count($blogs) == 0)
                         @foreach($blogs as $blog)

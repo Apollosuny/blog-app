@@ -32,13 +32,16 @@ Route::post('/auth/local/', [AuthController::class, 'authenticate'])->name('auth
 Route::middleware(['guest'])->get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/local/register', [AuthController::class, 'store']);
 
+Route::post('/upload', [BlogController::class, 'upload_image'])->name('upload');
+Route::get('/profile/achieve', [BlogController::class, 'achieve'])->name('achieve');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [AuthController::class, 'edit_profile'])->name('edit_profile');
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit']);
-    Route::delete('/blogs/{blog}', [BlogController::class, 'soft_delete']);
+    Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->withTrashed();
+    Route::post('/blogs/{blog}/restore', [BlogController::class, 'restore'])->withTrashed();
 });
 
 Route::post('/blog-create', [BlogController::class, 'store']);

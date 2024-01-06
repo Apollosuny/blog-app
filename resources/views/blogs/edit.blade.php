@@ -19,8 +19,8 @@
             
                         <div class="mb-6">
                             <label for="title" class="inline-block text-lg mb-2">Blog content</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="blog_content"
-                                placeholder="Example: Senior Laravel Developer" value="{{ $blog->blog_content }}" />
+                            <textarea class="border border-gray-200 rounded p-2 w-full" id="editor" name="blog_content"
+                                placeholder="Example: Senior Laravel Developer">{{ $blog->blog_content }}</textarea>
                             @error('blog_content')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -63,3 +63,10 @@
         </div>
     </div>
 </x-layout>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
