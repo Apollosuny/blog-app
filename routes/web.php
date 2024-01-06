@@ -51,5 +51,8 @@ Route::put('/profile/edit', [AuthController::class, 'save_profile']);
 // Admin route
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/dashboard/all-blog', [AdminController::class, 'all_blog'])->name('all-blog');
+    Route::delete('/dashboard/all-blog/{blog}', [AdminController::class, 'destroy']);
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/categories', [AdminController::class, 'all_categories'])->name('all-categories');
+    Route::get('/dashboard/users', [AdminController::class, 'users'])->name('users');
 });

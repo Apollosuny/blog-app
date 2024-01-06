@@ -9,7 +9,7 @@
             <div class="banner mt-8">
                 <x-banner-card />
             </div>
-            <div class="blog-list grid grid-cols-4 gap-3 mt-12">
+            <div class="blog-list grid grid-cols-4 gap-5 mt-12">
                 @unless(count($blogs) == 0)
                     @foreach($blogs as $blog)
                         <x-blog-card :blog="$blog" />
