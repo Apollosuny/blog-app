@@ -56,6 +56,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @unless(count($blogs) == 0)
                             @foreach ($blogs as $blog)
                                 <tr
                                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 overflow-hidden">
@@ -135,6 +136,11 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="6" class="px-5 py-4 text-lg font-semibold text-center">No content in the table</td>
+                            </tr>
+                            @endunless
                         </tbody>
                     </table>
                 </div>

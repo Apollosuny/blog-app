@@ -1,11 +1,11 @@
 <x-layout>
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 my-3">
         <div class="grid grid-cols-4 mt-24">
             <div class="col-span-1">
                 <h2 class="text-3xl font-semibold">Create new Blog</h2>
             </div>
             <div class="col-span-3">
-                <x-card class="p-10 w-full mx-auto mt-24">
+                <div class="bg-white shadow-md rounded-lg p-5 w-full mx-auto">
             
                     <form method="POST" action="/blog-create" enctype="multipart/form-data">
                         @csrf
@@ -55,7 +55,7 @@
                             <a href="/" class="text-black ml-4 hover:border rounded py-2 px-4"> Back </a>
                         </div>
                     </form>
-                </x-card>
+                </div>
             </div>
         </div>
     </div>
