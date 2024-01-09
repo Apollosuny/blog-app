@@ -26,11 +26,11 @@ class AdminController extends Controller
     }
 
     public function all_blog(Request $request) {
-        return view('admin.all-blog', [ 'blogs' => Blog::latest()->paginate(10) ]);
+        return view('admin.all-blog', [ 'blogs' => Blog::latest()->simplePaginate(6) ]);
     }
 
     public function all_categories(Request $request) {
-        return view('admin.categories', [ 'categories' => Category::latest()->paginate(10)]);
+        return view('admin.categories', [ 'categories' => Category::latest()->simplePaginate(5)]);
     }
 
     public function users(Request $request) {

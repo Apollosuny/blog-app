@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request) {
         return view('categories.index', [ 
-            'blogs' => Blog::latest()->filter(request(['tag', 'search']))->paginate(8),
+            'blogs' => Blog::latest()->filter(request(['tag', 'search']))->get(),
             'categories' => Category::take(5)->get()
         ]);
     }

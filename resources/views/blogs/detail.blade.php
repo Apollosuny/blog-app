@@ -21,7 +21,7 @@
                         </li>
                     </ol>
                 </div>
-                @if (auth()->user()->id == $blog->user_id)
+                @if (auth()->user() && auth()->user()->id == $blog->user_id)
                     <div class="flex gap-4">
                         <a class="
                         text-white 

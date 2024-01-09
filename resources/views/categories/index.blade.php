@@ -28,9 +28,6 @@
                     <p>No blog found!!!</p>
                 @endunless
             </div>
-            <div class="mt-6 p-4">
-                {{ $blogs->links() }}
-            </div>
         </div>
     </div>
 </x-layout>

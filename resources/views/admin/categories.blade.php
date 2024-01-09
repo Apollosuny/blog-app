@@ -28,82 +28,84 @@
             <div class="mt-6">
                 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Category Id
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category Name
-                </th>
-                <th scope="col" class="px-6 py-3 text-center">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($categories as $category)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 overflow-hidden">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $category->id }}
-                </th>
-                <td class="px-6 py-4">
-                    {{ $category->name }}
-                </td>
-                <td class="px-6 py-4">
-                    <div class="h-full flex gap-2 justify-center items-center">
-                        <a href="#" class="
-                        text-white 
-                        bg-sky-400
-                        hover:bg-sky-800 
-                        focus:ring-4 
-                        focus:outline-none 
-                        focus:ring-sky-300 
-                        font-medium 
-                        rounded-lg 
-                        text-sm 
-                        px-4 
-                        py-2 
-                        text-center 
-                        dark:bg-sky-600 
-                        dark:hover:bg-sky-700 
-                        dark:focus:ring-sky-800">
-                        Edit
-                    </a>
-                        <form method="POST" action="/dashboard/all-blog/{{ $category->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="
-                                    text-white 
-                                    bg-red-700
-                                    hover:bg-red-800 
-                                    focus:ring-4 
-                                    focus:outline-none 
-                                    focus:ring-red-300 
-                                    font-medium 
-                                    rounded-lg 
-                                    text-sm 
-                                    px-4 
-                                    py-2 
-                                    text-center 
-                                    dark:bg-red-600 
-                                    dark:hover:bg-red-700 
-                                    dark:focus:ring-red-800">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
-
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Category Id
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Category Name
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-center">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($categories as $category)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 overflow-hidden">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $category->id }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $category->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="h-full flex gap-2 justify-center items-center">
+                                        <a href="#" class="
+                                        text-white 
+                                        bg-sky-400
+                                        hover:bg-sky-800 
+                                        focus:ring-4 
+                                        focus:outline-none 
+                                        focus:ring-sky-300 
+                                        font-medium 
+                                        rounded-lg 
+                                        text-sm 
+                                        px-4 
+                                        py-2 
+                                        text-center 
+                                        dark:bg-sky-600 
+                                        dark:hover:bg-sky-700 
+                                        dark:focus:ring-sky-800">
+                                        Edit
+                                    </a>
+                                        <form method="POST" action="/dashboard/all-blog/{{ $category->id }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="
+                                                    text-white 
+                                                    bg-red-700
+                                                    hover:bg-red-800 
+                                                    focus:ring-4 
+                                                    focus:outline-none 
+                                                    focus:ring-red-300 
+                                                    font-medium 
+                                                    rounded-lg 
+                                                    text-sm 
+                                                    px-4 
+                                                    py-2 
+                                                    text-center 
+                                                    dark:bg-red-600 
+                                                    dark:hover:bg-red-700 
+                                                    dark:focus:ring-red-800">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div class="flex justify-end gap-4 mt-3">
+                    {{ $categories->links() }}
+                </div>
             </div>
         </div>
     </div>
